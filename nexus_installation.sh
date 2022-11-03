@@ -74,7 +74,8 @@ do
     echo "Download latest version of Nexus"
     sudo wget -O nexus.tar.gz https://download.sonatype.com/nexus/3/latest-unix.tar.gz
     echo "Setting up Nexus"
-    sudo tar -xvf nexus.tar.gzsudo sed -i 's/run_as_user/run_as_user="nexus"/g' /app/nexus/bin/nexus.rc
+    sudo tar -xvf nexus.tar.gz
+    sudo sed -i 's/run_as_user/run_as_user="nexus"/g' /app/nexus/bin/nexus.rc
 
     sudo mv nexus-3* nexus
 
