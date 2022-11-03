@@ -1,8 +1,19 @@
-sudo yum update -y
-echo "Installing wget"
-sudo yum install wget -y
-echo "Installing Java"
-sudo yum install java-1.8.0-openjdk.x86_64 -y
+while getopts ":lu" option;
+do
+ case $option in 
+ l) echo "Linux OS selected"
+    sudo yum update -y
+    echo "Installing wget"
+    sudo yum install wget -y
+    echo "Installing Java"
+    sudo yum install java-1.8.0-openjdk.x86_64 -y
+    ;;
+ u) echo "Ubuntu OS selected"
+    sudo apt update -y
+    echo "Installing Wget"
+    sudo apt install wget -y
+    echo "Installing Java"
+    sudo apt install java-1.8.0-openjdk.x86_64 -y
 
 sudo mkdir /app && cd /app
 echo "Download latest version of Nexus"
@@ -47,6 +58,9 @@ Restart=on-abort
 WantedBy=multi-user.target" > nexus.service
 
 sudo mv nexus-3* nexus
+
+
+
 sudo mv nexus.service /etc/systemd/system
 sudo mv nexus.vmoptions /app/nexus/bin/nexus.vmoptions
 
