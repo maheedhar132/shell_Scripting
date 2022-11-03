@@ -1,3 +1,5 @@
+dir=$(pwd)
+
 sudo printf "-Xms2703m
 -Xmx2703m
 -XX:MaxDirectMemorySize=2703m
@@ -53,8 +55,8 @@ do
 
     sudo sed -i 's/run_as_user/run_as_user="nexus"/g' /app/nexus/bin/nexus.rc
 
-    sudo mv ./nexus.service /etc/systemd/system
-    sudo mv ./nexus.vmoptions /app/nexus/bin/nexus.vmoptions
+    sudo mv $dir/nexus.service /etc/systemd/system
+    sudo mv $dir/nexus.vmoptions /app/nexus/bin/nexus.vmoptions
 
 
 
@@ -74,8 +76,6 @@ do
     sudo wget -O nexus.tar.gz https://download.sonatype.com/nexus/3/latest-unix.tar.gz
     echo "Setting up Nexus"
     sudo tar -xvf nexus.tar.gz
-
-    sleep 30s
     
 
     sudo mv nexus-3* nexus
