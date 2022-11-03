@@ -14,6 +14,9 @@ do
     sudo apt install wget -y
     echo "Installing Java"
     sudo apt install java-1.8.0-openjdk.x86_64 -y
+    ;;
+esac
+done
 
 sudo mkdir /app && cd /app
 echo "Download latest version of Nexus"
