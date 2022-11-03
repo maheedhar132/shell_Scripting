@@ -10,9 +10,7 @@ sudo wget -O nexus.tar.gz https://download.sonatype.com/nexus/3/latest-unix.tar.
 echo "Setting up Nexus"
 sudo tar -xvf nexus.tar.gz
 sudo mv nexus-3* nexus
-sudo adduser nexus
-sudo chown -R nexus:nexus /app/nexus
-sudo chown -R nexus:nexus /app/sonatype-work
+
 sudo sed -i 's/run_as_user/run_as_user="nexus"/g' /app/nexus/bin/nexus.rc
 sudo printf "-Xms2703m
 -Xmx2703m
@@ -46,7 +44,14 @@ User=nexus
 Restart=on-abort
 
 [Install]
-WantedBy=multi-user.target" > /etc/systemd/system/nexus.service
+WantedBy=multi-user.target" > nexus.service
+
+sudo mv nexus.service /etc/systemd/system
+
+
+sudo adduser nexus
+sudo chown -R nexus:nexus /app/nexus
+sudo chown -R nexus:nexus /app/sonatype-work
 
 sudo chkconfig nexus on
 
