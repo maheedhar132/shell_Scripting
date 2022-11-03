@@ -89,7 +89,7 @@ do
 
     sudo chown -R nexus:nexus /app/nexus
     sudo chown -R nexus:nexus /app/sonatype-work
-    update-rc.d nexus enable
+    sudo systemctl nexus enable
     ;;
 esac
 done
