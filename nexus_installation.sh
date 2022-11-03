@@ -13,8 +13,8 @@ sudo mv nexus-3* nexus
 sudo adduser nexus
 sudo chown -R nexus:nexus /app/nexus
 sudo chown -R nexus:nexus /app/sonatype-work
-sed -i 's/run_as_user/run_as_user="nexus"/g' /app/nexus/bin/nexus.rc
-printf "-Xms2703m
+sudo sed -i 's/run_as_user/run_as_user="nexus"/g' /app/nexus/bin/nexus.rc
+sudo printf "-Xms2703m
 -Xmx2703m
 -XX:MaxDirectMemorySize=2703m
 -XX:+UnlockDiagnosticVMOptions
@@ -31,7 +31,7 @@ printf "-Xms2703m
 -Djava.io.tmpdir=../sonatype-work/nexus3/tmp
 -Dkaraf.startLocalConsole=false" > /app/nexus/bin/nexus.vmoptions
 
-printf "[Unit]
+sudo printf "[Unit]
 Description=nexus service
 After=network.target
 
