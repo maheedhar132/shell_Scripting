@@ -7,13 +7,15 @@ do
     sudo yum install wget -y
     echo "Installing Java"
     sudo yum install java-1.8.0-openjdk.x86_64 -y
+    sudo adduser nexus
     ;;
  u) echo "Ubuntu OS selected"
     sudo apt update -y
     echo "Installing Wget"
     sudo apt install wget -y
     echo "Installing Java"
-    sudo apt-get install openjdk-8-jdk -y 
+    sudo apt-get install openjdk-8-jdk -y
+    sudo useradd nexus
     ;;
 esac
 done
@@ -68,10 +70,17 @@ sudo mv nexus.service /etc/systemd/system
 sudo mv nexus.vmoptions /app/nexus/bin/nexus.vmoptions
 
 
-sudo adduser nexus
+
 sudo chown -R nexus:nexus /app/nexus
 sudo chown -R nexus:nexus /app/sonatype-work
 
-sudo chkconfig nexus on
+do 
+ case $option in 
+ l) sudo chkconfig nexus on
+    ;;
+ u) update-rc.d nexus on
+    ;;
+esac
+done
 
 sudo systemctl start nexus
