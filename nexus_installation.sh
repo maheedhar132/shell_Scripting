@@ -48,6 +48,9 @@ do
     sudo wget -O nexus.tar.gz https://download.sonatype.com/nexus/3/latest-unix.tar.gz
     echo "Setting up Nexus"
     sudo tar -xvf nexus.tar.gz
+
+    sleep 30s 
+
     sudo sed -i 's/run_as_user/run_as_user="nexus"/g' /app/nexus/bin/nexus.rc
 
     sudo mv nexus-3* nexus
@@ -75,6 +78,8 @@ do
     sudo wget -O nexus.tar.gz https://download.sonatype.com/nexus/3/latest-unix.tar.gz
     echo "Setting up Nexus"
     sudo tar -xvf nexus.tar.gz
+
+    sleep 30s
     sudo sed -i 's/run_as_user/run_as_user="nexus"/g' /app/nexus/bin/nexus.rc
 
     sudo mv nexus-3* nexus
@@ -88,7 +93,7 @@ do
 
     sudo chown -R nexus:nexus /app/nexus
     sudo chown -R nexus:nexus /app/sonatype-work
-    update-rc.d nexus on
+    update-rc.d nexus enable
     ;;
 esac
 done
