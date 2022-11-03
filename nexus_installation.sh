@@ -9,7 +9,7 @@ echo "Download latest version of Nexus"
 sudo wget -O nexus.tar.gz https://download.sonatype.com/nexus/3/latest-unix.tar.gz
 echo "Setting up Nexus"
 sudo tar -xvf nexus.tar.gz
-sudo mv nexus-3* nexus
+
 
 sudo sed -i 's/run_as_user/run_as_user="nexus"/g' /app/nexus/bin/nexus.rc
 sudo printf "-Xms2703m
@@ -21,14 +21,13 @@ sudo printf "-Xms2703m
 -XX:LogFile=../sonatype-work/nexus3/log/jvm.log
 -XX:-OmitStackTraceInFastThrow
 -Djava.net.preferIPv4Stack=true
+-Dkaraf.data=/app/sonatye-work/nexus3
 -Dkaraf.home=.
 -Dkaraf.base=.
 -Dkaraf.etc=etc/karaf
 -Djava.util.logging.config.file=etc/karaf/java.util.logging.properties
--Dkaraf.data=/nexus/nexus-data
 -Djava.io.tmpdir=../sonatype-work/nexus3/tmp
--Dkaraf.startLocalConsole=false
--Dkaraf.data=/app/sonatye" > nexus.vmoptions
+-Dkaraf.startLocalConsole=false" > nexus.vmoptions
 
 sudo printf "[Unit]
 Description=nexus service
@@ -47,6 +46,7 @@ Restart=on-abort
 [Install]
 WantedBy=multi-user.target" > nexus.service
 
+sudo mv nexus-3* nexus
 sudo mv nexus.service /etc/systemd/system
 sudo mv nexus.vmoptions /app/nexus/bin/nexus.vmoptions
 
