@@ -1,9 +1,13 @@
 sudo yum update -y
 echo "Installing wget"
 sudo yum install wget -y
+echo "Installing Java"
 sudo yum install java-1.8.0-openjdk.x86_64 -y
+
 sudo mkdir /app && cd /app
+echo "Download latest version of Nexus"
 sudo wget -O nexus.tar.gz https://download.sonatype.com/nexus/3/latest-unix.tar.gz
+echo "Setting up Nexus"
 sudo tar -xvf nexus.tar.gz
 sudo mv nexus-3* nexus
 sudo adduser nexus
