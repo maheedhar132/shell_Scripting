@@ -51,11 +51,11 @@ do
 
     sleep 30s 
 
-    sudo sed -i 's/run_as_user/run_as_user="nexus"/g' /app/nexus/bin/nexus.rc
+    
 
     sudo mv nexus-3* nexus
 
-
+    sudo sed -i 's/run_as_user/run_as_user="nexus"/g' /app/nexus/bin/nexus.rc
 
     sudo mv nexus.service /etc/systemd/system
     sudo mv nexus.vmoptions /app/nexus/bin/nexus.vmoptions
@@ -80,11 +80,11 @@ do
     sudo tar -xvf nexus.tar.gz
 
     sleep 30s
-    sudo sed -i 's/run_as_user/run_as_user="nexus"/g' /app/nexus/bin/nexus.rc
+    
 
     sudo mv nexus-3* nexus
 
-
+    sudo sed -i 's/run_as_user/run_as_user="nexus"/g' /app/nexus/bin/nexus.rc 
 
     sudo mv nexus.service /etc/systemd/system
     sudo mv nexus.vmoptions /app/nexus/bin/nexus.vmoptions
