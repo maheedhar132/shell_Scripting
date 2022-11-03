@@ -49,16 +49,12 @@ do
     echo "Setting up Nexus"
     sudo tar -xvf nexus.tar.gz
 
-    sleep 30s 
-
-    
-
     sudo mv nexus-3* nexus
 
     sudo sed -i 's/run_as_user/run_as_user="nexus"/g' /app/nexus/bin/nexus.rc
 
-    sudo mv nexus.service /etc/systemd/system
-    sudo mv nexus.vmoptions /app/nexus/bin/nexus.vmoptions
+    sudo mv ./nexus.service /etc/systemd/system
+    sudo mv ./nexus.vmoptions /app/nexus/bin/nexus.vmoptions
 
 
 
@@ -86,8 +82,8 @@ do
 
     sudo sed -i 's/run_as_user/run_as_user="nexus"/g' /app/nexus/bin/nexus.rc 
 
-    sudo mv nexus.service /etc/systemd/system
-    sudo mv nexus.vmoptions /app/nexus/bin/nexus.vmoptions
+    sudo mv ./nexus.service /etc/systemd/system
+    sudo mv ./nexus.vmoptions /app/nexus/bin/nexus.vmoptions
 
 
 
