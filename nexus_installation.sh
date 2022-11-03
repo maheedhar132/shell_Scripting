@@ -27,7 +27,7 @@ sudo printf "-Xms2703m
 -Djava.util.logging.config.file=etc/karaf/java.util.logging.properties
 -Dkaraf.data=/nexus/nexus-data
 -Djava.io.tmpdir=../sonatype-work/nexus3/tmp
--Dkaraf.startLocalConsole=false" > /app/nexus/bin/nexus.vmoptions
+-Dkaraf.startLocalConsole=false" > nexus.vmoptions
 
 sudo printf "[Unit]
 Description=nexus service
@@ -47,6 +47,7 @@ Restart=on-abort
 WantedBy=multi-user.target" > nexus.service
 
 sudo mv nexus.service /etc/systemd/system
+sudo mv nexus.vmoptions /app/nexus/bin/nexus.vmoptions
 
 
 sudo adduser nexus
