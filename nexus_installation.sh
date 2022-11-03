@@ -13,7 +13,9 @@ do
     echo "Installing Wget"
     sudo apt install wget -y
     echo "Installing Java"
-    sudo apt install java-1.8.0-openjdk.x86_64 -y
+    sudo add-apt-repository ppa:webupd8team/java
+    sudo apt-get update -y 
+    sudo apt-get install oracle-java8-installer
     ;;
 esac
 done
