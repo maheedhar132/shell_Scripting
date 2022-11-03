@@ -27,7 +27,8 @@ sudo printf "-Xms2703m
 -Djava.util.logging.config.file=etc/karaf/java.util.logging.properties
 -Dkaraf.data=/nexus/nexus-data
 -Djava.io.tmpdir=../sonatype-work/nexus3/tmp
--Dkaraf.startLocalConsole=false" > nexus.vmoptions
+-Dkaraf.startLocalConsole=false
+-Dkaraf.data=/app/sonatye" > nexus.vmoptions
 
 sudo printf "[Unit]
 Description=nexus service
