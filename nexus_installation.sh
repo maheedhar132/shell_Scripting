@@ -82,8 +82,8 @@ do
 
     sudo sed -i 's/run_as_user/run_as_user="nexus"/g' /app/nexus/bin/nexus.rc 
 
-    sudo mv ./nexus.service /etc/systemd/system
-    sudo mv ./nexus.vmoptions /app/nexus/bin/nexus.vmoptions
+    sudo mv $dir/nexus.service /etc/systemd/system
+    sudo mv $dir/nexus.vmoptions /app/nexus/bin/nexus.vmoptions
 
 
 
