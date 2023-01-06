@@ -30,5 +30,15 @@ echo "Downloading the binary........."
 curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
 echo "Move the binary to /usr/local/bin..........."
 sudo mv /tmp/eksctl /usr/local/bin
-echo "Check installation......."
-eksctl
+
+
+
+#Check all the installations
+
+echo "Checking all the installations......."
+echo "Kubectl version: "
+kubectl version --client
+echo "awscli version: "
+aws --version
+echo "eksctl version: "
+eksctl version
